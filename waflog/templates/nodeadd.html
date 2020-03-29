@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 110px;
+    }
+</style>
+{% include "menu.html" %}
+<body>
+<div class="home">
+    <div class="home_right">
+        <div class="homepage">
+            <div class="ptbt"><a>节点管理</a></div>
+            <div class="pagename"><a>节点列表</a></div>
+            <div class="dangqianweizhi"><a>首页 > 节点管理 > 节点列表</a></div>
+        </div>
+    </div>
+</div>
+<div class="content" align="center">
+    <ol class="breadcrumb"  style="background-color: #FFFFFF; margin-bottom: 15px; width: 95%; height: 70px;">
+        <form action="nodelist.html" method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <label>节点名称
+                <input type="text" name="node_name">
+            </label>
+            <label>节点地址
+                <input type="text" name="node_ip">
+            </label>
+            <button type="submit" class="btn btn-default" style="float: left;margin-left: 15px; color: #0FB9EF">添加节点</button>
+        </form>
+    </ol>
+    <div style="width: 95%;background-color: #FFFFFF;height: 630px;padding-top: 15px;">
+        <pre class="language-Makefile" style="width: 96%; height: 600px; padding: 10px; text-align: left; font-size: 15px;">
+            <code class="language-Makefile">{{ result }}</code>
+        </pre>
+    </div>
+</div>
+</body>
+</html>

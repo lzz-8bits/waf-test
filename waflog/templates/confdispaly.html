@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 110px;
+    }
+</style>
+{% include "menu.html" %}
+<body>
+<div class="home">
+    <div class="home_right">
+        <div class="homepage">
+            <div class="ptbt"><a>站点配置</a></div>
+            <div class="pagename"><a>WAF配置</a></div>
+            <div class="dangqianweizhi"><a>首页 > 站点配置 > WAF配置</a></div>
+        </div>
+    </div>
+</div>
+<div class="content" align="center">
+    <ol class="breadcrumb"  style="background-color: #FFFFFF; margin-bottom: 15px; width: 95%; height: 70px;">{% csrf_token %}
+        <div class="node_list">
+            <div class="node_list_ls">
+                <table class="table table-striped table-bordered table-hover" table-layout=fixed; width=100%; align="center">
+                    <thead>
+                    <tr>
+                        <th>节点名称</th>
+                        <th>防护状态</th>
+                        <th>白名单</th>
+                        <th>黑名单</th>
+                        <th>URL防护</th>
+                        <th>UA防护</th>
+                        <th>cookie防护</th>
+                        <th>CC防护</th>
+                        <th>HTTP转发</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for guard in guradlist %}
+                        <tr>
+                            <td>
+                                {{ guard.node_guard }}
+                            </td>
+                            <td>
+                                {{ guard.waf_enable }}
+                            </td>
+                            <td>
+                                {{ guard.white_ip_check }}
+                            </td>
+                            <td>
+                                {{ guard.black_ip_check }}
+                            </td>
+                            <td>
+                                {{ guard.url_check }}
+                            </td>
+                            <td>
+                                {{ guard.user_agent_check }}
+                            </td>
+                            <td>
+                                {{ guard.cookie_check }}
+                            </td>
+                            <td>
+                                {{ guard.cc_check }}
+                            </td>
+                            <td>
+                                {{ guard.waf_output }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </ol>
+    <div style="width: 95%;background-color: #FFFFFF;height: 630px;padding-top: 15px;">
+        <pre class="language-Makefile" style="width: 96%; height: 600px; padding: 10px; text-align: left; font-size: 15px;">
+            <code class="language-Makefile"></code>
+        </pre>
+    </div>
+</div>
+</body>
+</html>
